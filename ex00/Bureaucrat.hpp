@@ -11,14 +11,20 @@ class Bureaucrat
 		const std::string _name;
 		int				  _grade;
 
-		static void _validateGrade(int grade);
+		static void _setGrade(int grade);
 	public:
+		// default constructor
 		Bureaucrat();
+		Bureaucrat(std::string const *name);
+		Bureaucrat(int grade);
 		Bureaucrat(const std::string &name, int grade);
 		Bureaucrat(const Bureaucrat &other);
+		// destructor
 		~Bureaucrat();
 
-		const std::string &getName() const;
+		Bureaucrat &operator=(Bureaucrat const &other);
+
+		const std::string getName() const;
 		int				  getGrade() const;
 
 		void incrementGrade();
@@ -37,7 +43,7 @@ class Bureaucrat
 		};
 };
 
-std::ostream &operator<<(std::ostream &out, const Bureaucrat &bureaucrat);
+std::ostream &operator<<(std::ostream &out, const Bureaucrat &other);
 
 #endif
 
