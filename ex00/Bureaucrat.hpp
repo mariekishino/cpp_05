@@ -11,11 +11,11 @@ class Bureaucrat
 		const std::string _name;
 		int				  _grade;
 
-		static void _setGrade(int grade);
+		void _setGrade(int grade);
 	public:
 		// default constructor
 		Bureaucrat();
-		Bureaucrat(std::string const *name);
+		Bureaucrat(std::string const &name);
 		Bureaucrat(int grade);
 		Bureaucrat(const std::string &name, int grade);
 		Bureaucrat(const Bureaucrat &other);
@@ -36,7 +36,7 @@ class Bureaucrat
 				virtual const char *what() const throw();
 		};
 
-		class GradeToolLowException : public std::exception
+		class GradeTooLowException : public std::exception
 		{
 			public:
 				virtual const char *what() const throw();

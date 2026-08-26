@@ -4,23 +4,23 @@
 
 Bureaucrat::Bureaucrat() : _name("default"), _grade(150)
 {
-	std::cout << "default Bureaucrat constructor called" << std::endl;
+	std::cout << "Bureaucrat constructor default called" << std::endl;
 }
 
 Bureaucrat::Bureaucrat(std::string const &name) : _name(name), _grade(150)
 {
-	std::cout << "Bereucrat constructor" << this->_name << "called" << std::endl;
+	std::cout << "Bereucrat constructor " << this->_name << "called" << std::endl;
 }
 
 Bureaucrat::Bureaucrat(int grade) : _name("default")
 {
-	std::cout << "Bureaucrat default constructor with grade( " << grade << " ) called" << std::endl;
+	std::cout << "Bureaucrat constructor default with grade ( " << grade << " ) called" << std::endl;
 	this->_setGrade(grade);
 }
 
 Bureaucrat::Bureaucrat(std::string const &name, int grade) : _name(name)
 {
-	std::cout << "Bureaucrat" << this->_name << "constructor with grade(" << grade << " ) called" << std::endl;
+	std::cout << "Bureaucrat constructor " << this->_name << " with grade ( " << grade << " ) called" << std::endl;
 	this->_setGrade(grade);
 }
 
@@ -43,5 +43,56 @@ Bureaucrat &Bureaucrat::operator=(Bureaucrat const &other)
 /* Destructor */
 Bureaucrat::~Bureaucrat()
 {
-	std::cout << "Bureaucrat destructor" << this->_name << "called" << std::endl;
+	std::cout << "Bureaucrat destructor " << this->_name << " called" << std::endl;
+}
+
+std::string const Bureaucrat::getName() const
+{
+	return(this->_name);
+}
+
+int Bureaucrat::getGrade() const
+{
+	return(this->_grade);
+}
+
+void Bureaucrat::_setGrade(int grade)
+{
+	if (grade < 1)
+		throw Bureaucrat::GradeTooHighException();
+	else if (grade > 150)
+		throw Bureaucrat::GradeTooLowException();
+	else
+		this->_grade = grade;
+}
+
+void Bureaucrat::incrementGrade()
+{
+	this->_setGrade(this->_grade - 1);
+}
+
+void Bureaucrat::decrementGrade()
+{
+	this->_setGrade(this->_grade + 1);
+}
+
+const char *Bureaucrat::GradeTooHighException::what() const throw()
+{
+	return ("Grade too high");
+}
+
+const char *Bureaucrat::GradeTooLowException::what() const throw()
+{
+	return ("Grade too low");
+}
+
+// 参照で受け取るのが自然
+std::ostream &operator<<(std::ostream &out, const Bureaucrat &other)
+{
+	out << other.getName() 
+		<< ", bureaucrat grade " 
+		<< other.getGrade() 
+		<< ".";
+
+	return (out);
 }
