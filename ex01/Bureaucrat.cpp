@@ -1,5 +1,12 @@
 #include "Bureaucrat.hpp"
 
+#define RESET "\033[0m"
+#define DARK_GREEN "\033[38;5;22m"
+#define NEON_GREEN "\033[1;92m"
+#define RED "\033[1;91m"
+#define YELLOW "\033[1;93m"
+
+
 /* Constructors */
 
 Bureaucrat::Bureaucrat() : _name("default"), _grade(150)
@@ -91,10 +98,12 @@ void Bureaucrat::signForm(Form &form)
     }
     catch (const std::exception &e)
     {
-        std::cout << _name << " couldn't sign "
+        std::cout << RED
+				  << _name << " couldn't sign "
                   << form.getName()
                   << " because "
-                  << e.what() << std::endl;
+                  << e.what() 
+				  << RESET << std::endl;
     }
 }
 

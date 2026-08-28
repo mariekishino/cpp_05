@@ -2,7 +2,7 @@
 
 Form::Form() : _name("default"), _isSigned(false), _gradeToSign(150), _gradeToExec(150)
 {
-	std::cout << "Form" << this->_name << "created" << std::endl;
+	std::cout << "Form constructor" << this->_name << " called" << std::endl;
 }
 
 Form::Form(Form const &other) : _name(other.getName()), _isSigned(false), _gradeToSign(other.getGradeToSign()), _gradeToExec(other.getGradeToExec())
@@ -11,12 +11,12 @@ Form::Form(Form const &other) : _name(other.getName()), _isSigned(false), _grade
 }
 Form::Form(int gradeToSign, int gradeToExec) : _name("default"), _isSigned(false), _gradeToSign(gradeToSign), _gradeToExec(gradeToExec)
 {
-	std::cout << "Form default with sign-grade of ( " << gradeToSign << " ) and exec-grade of ( " << gradeToExec << " ) created" << std::endl;
+	std::cout << "Form constructor default with sign-grade of ( " << gradeToSign << " ) and exec-grade of ( " << gradeToExec << " ) called" << std::endl;
 	this->_checkGrade(gradeToSign, gradeToExec);
 }
 Form::~Form()
 {
-	std::cout << "From " << this->_name << " destroyed" << std::endl;
+	std::cout << "From destructor" << this->_name << " called" << std::endl;
 }
 Form &Form::operator=(Form const &other)
 {

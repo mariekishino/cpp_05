@@ -18,6 +18,16 @@ static void printTitle(const std::string &title)
     std::cout << RESET << std::endl;
 }
 
+static void separateLine()
+{
+	std::cout << DARK_GREEN
+			  << "-----------------------------------------------------------------------"
+			  << RESET << std::endl;
+}
+
+
+// test 1
+
 static void testFormCreation(void)
 {
     printTitle("TEST 1: VALID FORM CREATION");
@@ -25,12 +35,16 @@ static void testFormCreation(void)
     try
     {
         Form form(30, 20);
+		separateLine();
+		std::cout << std::endl;
 
         std::cout << "Name          : " << form.getName() << std::endl;
         std::cout << "Signed        : "
                   << (form.getIsSigned() ? "true" : "false") << std::endl;
         std::cout << "Grade to sign : " << form.getGradeToSign() << std::endl;
         std::cout << "Grade to exec : " << form.getGradeToExec() << std::endl;
+		std::cout << std::endl;
+		separateLine();
     }
     catch (const std::exception &e)
     {
@@ -47,6 +61,8 @@ static void testSuccessfulSign(void)
     {
         Bureaucrat alice("Alice", 20);
         Form form(30, 20);
+		separateLine();
+		std::cout << std::endl;
 
         std::cout << "Before signing: "
                   << (form.getIsSigned() ? "signed" : "not signed")
@@ -57,6 +73,9 @@ static void testSuccessfulSign(void)
         std::cout << "After signing : "
                   << (form.getIsSigned() ? "signed" : "not signed")
                   << std::endl;
+
+		std::cout << std::endl;
+		separateLine();
     }
     catch (const std::exception &e)
     {
@@ -73,15 +92,19 @@ static void testFailedSign(void)
     {
         Bureaucrat bob("Bob", 50);
         Form form(30, 20);
+		separateLine();
+		std::cout << std::endl;
 
         std::cout << "Bureaucrat grade : " << bob.getGrade() << std::endl;
         std::cout << "Required grade   : " << form.getGradeToSign() << std::endl;
 
         bob.signForm(form);
 
-        std::cout << RED
-                  << "ERROR: Bob should not have been able to sign."
-                  << RESET << std::endl;
+    	std::cout << "Signed status    : "
+              	  << (form.getIsSigned() ? "signed" : "not signed")
+              	  << std::endl;
+		std::cout << std::endl;
+		separateLine();
     }
     catch (const std::exception &e)
     {
@@ -100,12 +123,21 @@ static void testExactRequiredGrade(void)
     {
         Bureaucrat charlie("Charlie", 30);
         Form form(30, 20);
+		separateLine();
+		std::cout << std::endl;
+
+        std::cout << "Signed status before: "
+                  << (form.getIsSigned() ? "signed" : "not signed")
+                  << std::endl;
 
         charlie.signForm(form);
 
-        std::cout << "Signed status: "
+        std::cout << "Signed status after: "
                   << (form.getIsSigned() ? "signed" : "not signed")
                   << std::endl;
+		
+		std::cout << std::endl;
+		separateLine();
     }
     catch (const std::exception &e)
     {
@@ -121,10 +153,9 @@ static void testFormGradeTooHigh(void)
     try
     {
         Form form(0, 20);
+		separateLine();
+		std::cout << std::endl;
 
-        std::cout << RED
-                  << "ERROR: Form with grade 0 should not exist."
-                  << RESET << std::endl;
     }
     catch (const Form::GradeTooHighException &e)
     {
@@ -149,10 +180,8 @@ static void testFormGradeTooLow(void)
     try
     {
         Form form(30, 151);
-
-        std::cout << RED
-                  << "ERROR: Form with grade 151 should not exist."
-                  << RESET << std::endl;
+		separateLine();
+		std::cout << std::endl;
     }
     catch (const Form::GradeTooLowException &e)
     {
@@ -179,13 +208,19 @@ static void testAlreadySignedForm(void)
         Bureaucrat alice("Alice", 10);
         Bureaucrat bob("Bob", 20);
         Form form(30, 20);
+		separateLine();
+		std::cout << std::endl;
 
         alice.signForm(form);
-
+		std::cout << std::endl;
         std::cout << "First signing complete." << std::endl;
         std::cout << "Trying to sign the same form again..." << std::endl;
 
+		std::cout << std::endl;
         bob.signForm(form);
+
+		std::cout << std::endl;
+		separateLine();
     }
     catch (const std::exception &e)
     {
@@ -206,13 +241,20 @@ static void testInsertionOperator(void)
     {
         Bureaucrat alice("Alice", 10);
         Form form(30, 20);
+		separateLine();
+		std::cout << std::endl;
 
         std::cout << alice << std::endl;
         std::cout << form << std::endl;
+		std::cout << std::endl;
 
         alice.signForm(form);
+		std::cout << std::endl;
 
         std::cout << form << std::endl;
+
+		std::cout << std::endl;
+		separateLine();
     }
     catch (const std::exception &e)
     {

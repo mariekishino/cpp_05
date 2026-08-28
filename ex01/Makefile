@@ -1,10 +1,11 @@
-NAME = bureaucrat
+NAME = form
 
 CXX = c++
 CXXFLAGS = -Wall -Wextra -Werror -pedantic-errors -std=c++98
 INCLUDE = -I .
 
 SRC = main.cpp \
+	  Form.cpp \
 	  Bureaucrat.cpp \
 
 OBJS = $(SRC:.cpp=.o)
