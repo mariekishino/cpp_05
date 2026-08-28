@@ -22,7 +22,7 @@ class Form
 		Form(const Form &other);
 		Form(int gradeToSign, int gradeToExec);
 		Form(std::string const &name);
-		Form(const std::string &name, int gradeToGrade, int gradeToExec);
+		Form(const std::string &name, int gradeToSign, int gradeToExec);
 		~Form();
 
 		Form &operator=(Form const &other);

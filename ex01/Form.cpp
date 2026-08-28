@@ -14,13 +14,34 @@ Form::Form(int gradeToSign, int gradeToExec) : _name("default"), _isSigned(false
 	std::cout << "Form constructor default with sign-grade of ( " << gradeToSign << " ) and exec-grade of ( " << gradeToExec << " ) called" << std::endl;
 	this->_checkGrade(gradeToSign, gradeToExec);
 }
+
+Form::Form(std::string const &name) : _name(name), _isSigned(false), _gradeToSign(150), _gradeToExec(150)
+{
+	std::cout << "Form constructor " << this->_name << " created" << std::endl;
+
+}
+
+Form::Form(std::string const &name, int gradeToSign, int gradeToExec) : _name(name), _isSigned(false), _gradeToSign(gradeToSign), _gradeToExec(gradeToExec)
+{
+	std::cout << "Form constructor " 
+	          << this->_name 
+			  << " with sign-grade " 
+			  << gradeToSign 
+			  << " and exec-grade "
+			  << gradeToExec
+			  << " created" << std::endl; 
+	this->_checkGrade(gradeToSign, gradeToExec);
+
+}
+
+
 Form::~Form()
 {
 	std::cout << "From destructor" << this->_name << " called" << std::endl;
 }
 Form &Form::operator=(Form const &other)
 {
-	std::cout << "start assignation From to other" << std::endl;
+	std::cout << "start assignation Form to other" << std::endl;
 	if (this == &other)
 		return (*this);
 	return (*this);
