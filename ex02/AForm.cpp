@@ -37,7 +37,7 @@ AForm::AForm(std::string const &name, int gradeToSign, int gradeToExec) : _name(
 
 AForm::~AForm()
 {
-	std::cout << "AFrom destructor" << this->_name << " called" << std::endl;
+	std::cout << "AFrom destructor " << this->_name << " called" << std::endl;
 }
 AForm &AForm::operator=(AForm const &other)
 {
