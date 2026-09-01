@@ -3,9 +3,23 @@
 #include "AForm.hpp"
 #include "ShrubberyCreationForm.hpp"
 
+#define RESET "\033[0m"
+#define DARK_GREEN "\033[38;5;22m"
+#define NEON_GREEN "\033[1;92m"
+#define RED "\033[1;91m"
+#define YELLOW "\033[1;93m"
+
+
 static void printTitle(const std::string &title)
 {
     std::cout << "\n========== " << title << " ==========\n";
+}
+
+static void separateLine()
+{
+	std::cout << DARK_GREEN
+			  << "-----------------------------------------------------------------------"
+			  << RESET << std::endl;
 }
 
 int main()
@@ -16,6 +30,7 @@ int main()
     {
         Bureaucrat alice("Alice", 1);
         ShrubberyCreationForm form("garden");
+		separateLine();
 
         std::cout << form << std::endl;
 
@@ -23,6 +38,7 @@ int main()
         alice.executeForm(form);
 
         std::cout << form << std::endl;
+		separateLine();
     }
     catch (const std::exception &e)
     {
@@ -35,6 +51,7 @@ int main()
     {
         Bureaucrat alice("Alice", 1);
         ShrubberyCreationForm form("park");
+		separateLine();
 
         alice.executeForm(form);
     }
@@ -49,6 +66,7 @@ int main()
     {
         Bureaucrat bob("Bob", 150);
         ShrubberyCreationForm form("forest");
+		separateLine();
 
         bob.signForm(form);
     }
@@ -63,9 +81,11 @@ int main()
     {
         Bureaucrat charlie("Charlie", 140);
         ShrubberyCreationForm form("yard");
+		separateLine();
 
         charlie.signForm(form);
         charlie.executeForm(form);
+		separateLine();
     }
     catch (const std::exception &e)
     {
