@@ -30,5 +30,4 @@ class RobotomyRequestForm : public AForm
 
 std::ostream &operator<<(std::ostream &out, RobotomyRequestForm *src);
 
-
 #endif

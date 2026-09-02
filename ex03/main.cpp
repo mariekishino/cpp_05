@@ -4,6 +4,13 @@
 #include "Bureaucrat.hpp"
 #include "AForm.hpp"
 
+#define RESET "\033[0m"
+#define DARK_GREEN "\033[38;5;22m"
+#define NEON_GREEN "\033[1;92m"
+#define RED "\033[1;91m"
+#define YELLOW "\033[1;93m"
+
+
 static void printTitle(const std::string &title)
 {
 	std::cout << std::endl;
@@ -12,20 +19,30 @@ static void printTitle(const std::string &title)
 	std::cout << "========================================" << std::endl;
 }
 
+static void separateLine()
+{
+	std::cout << DARK_GREEN
+			  << "-----------------------------------------------------------------------"
+			  << RESET << std::endl;
+}
+
 static void testShrubberyCreationForm()
 {
 	printTitle("TEST 1: CREATE SHRUBBERY CREATION FORM");
 
 	Intern intern;
 	AForm *form;
+	separateLine();
 
 	form = intern.makeForm("shrubbery creation", "garden");
 
+	separateLine();
 	if (form != NULL)
 	{
 		std::cout << *form << std::endl;
 		delete form;
 	}
+
 }
 
 static void testRobotomyRequestForm()
@@ -34,9 +51,10 @@ static void testRobotomyRequestForm()
 
 	Intern intern;
 	AForm *form;
-
+	separateLine();
 	form = intern.makeForm("robotomy request", "Bender");
-
+	
+	separateLine();
 	if (form != NULL)
 	{
 		std::cout << *form << std::endl;
@@ -47,12 +65,13 @@ static void testRobotomyRequestForm()
 static void testPresidentialPardonForm()
 {
 	printTitle("TEST 3: CREATE PRESIDENTIAL PARDON FORM");
-
+	
 	Intern intern;
 	AForm *form;
 
 	form = intern.makeForm("presidential pardon", "Arthur");
 
+	separateLine();
 	if (form != NULL)
 	{
 		std::cout << *form << std::endl;
@@ -66,9 +85,11 @@ static void testUnknownForm()
 
 	Intern intern;
 	AForm *form;
-
+	separateLine();
 	form = intern.makeForm("coffee making", "Office");
 
+
+	separateLine();
 	if (form == NULL)
 		std::cout << "Form creation correctly failed." << std::endl;
 
@@ -82,9 +103,10 @@ static void testSignAndExecuteForm()
 	Intern intern;
 	Bureaucrat bureaucrat("Alice", 1);
 	AForm *form;
-
+	separateLine();
 	form = intern.makeForm("shrubbery creation", "home");
 
+	separateLine();
 	if (form == NULL)
 		return;
 
@@ -109,9 +131,10 @@ static void testInternCopyConstructor()
 	Intern copy(original);
 
 	AForm *form;
-
+	separateLine();
 	form = copy.makeForm("robotomy request", "Bender");
 
+	separateLine();
 	if (form != NULL)
 		delete form;
 }
@@ -126,9 +149,11 @@ static void testInternAssignmentOperator()
 	intern2 = intern1;
 
 	AForm *form;
+	separateLine();
 
 	form = intern2.makeForm("presidential pardon", "Arthur");
 
+	separateLine();
 	if (form != NULL)
 		delete form;
 }
