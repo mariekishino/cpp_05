@@ -42,23 +42,18 @@ void ShrubberyCreationForm::execute(const Bureaucrat &Bureaucrat) const
 		for (int i = 0; i < 5; i++)
 		{
 			outfile <<
-			"         v" << std::endl <<
-			"        >X<" << std::endl <<
-			"         A" << std::endl <<
-			"        d$b" << std::endl <<
-			"      .d\\$$b." << std::endl <<
-			"    .d$i$$\\$$b." << std::endl <<
-			"       d$$@b" << std::endl <<
-			"      d\\$$$ib" << std::endl <<
-			"    .d$$$\\$$$b" << std::endl <<
-			"  .d$$@$$$$\\$$ib." << std::endl <<
-			"      d$$i$$b" << std::endl <<
-			"     d\\$$$$@$b" << std::endl <<
-			"  .d$@$$\\$$$$$@b." << std::endl <<
-			".d$$$$i$$$\\$$$$$$b." << std::endl <<
-			"        ###" << std::endl <<
-			"        ###" << std::endl <<
-			"        ###" << std::endl <<
+			"            &&& &&  & &&" << std::endl <<
+			"        && &\\/&\\|& ()|/ @, &&" << std::endl <<
+			"        &\\/(/&/&||/& /_/)_&/_&" << std::endl <<
+			"     &() &\\/&|()|/&\\/ '%\" & ()" << std::endl <<
+			"    &_\\_&&_\\ |& |&&/&__%_/_& &&" << std::endl <<
+			"  &&   && & &| &| /& & % ()& /&&" << std::endl <<
+			"	()&_---()&\\&\\|&&-&&--%---()~" << std::endl <<
+			"       &&     \\|||" << std::endl <<
+			"               |||" << std::endl <<
+			"               |||" << std::endl <<
+			"               |||" << std::endl <<
+			"         , -=-~  .-^- _" << std::endl <<
 			std::endl;
 		}
 		outfile.close();

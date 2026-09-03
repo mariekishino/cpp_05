@@ -30,3 +30,6 @@ fclean: clean
 re: fclean all
 
 .PHONY: all clean fclean re
+
+# Valgrind check:
+# make re && ./ex03 && valgrind --leak-check=full --show-leak-kinds=all ./ex03

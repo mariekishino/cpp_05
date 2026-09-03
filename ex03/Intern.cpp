@@ -50,7 +50,15 @@ static AForm *makeShrubbery(const std::string &target)
 	return (new ShrubberyCreationForm(target));
 }
 
-AForm *Intern::makeForm(const std::string &formName, const std::string &target)
+AForm 
+
+/*
+AForm *を返す
+*formGeneratorは[3]は関数ポインタを入れる配列
+i番目に入っている関数を呼び出す、その関数の引数としてtargetを渡す
+*/
+
+*Intern::makeForm(const std::string &formName, const std::string &target)
 {
 	AForm *(*formGenerator[3])(const std::string &) =
 	{

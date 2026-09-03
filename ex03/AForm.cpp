@@ -17,7 +17,7 @@ AForm::AForm(int gradeToSign, int gradeToExec) : _name("default"), _isSigned(fal
 
 AForm::AForm(std::string const &name) : _name(name), _isSigned(false), _gradeToSign(150), _gradeToExec(150)
 {
-	std::cout << "AForm constructor " << this->_name << " created" << std::endl;
+	std::cout << "AForm constructor " << this->_name << " called" << std::endl;
 }
 
 AForm::AForm(std::string const &name, int gradeToSign, int gradeToExec) : _name(name), _isSigned(false), _gradeToSign(gradeToSign), _gradeToExec(gradeToExec)
