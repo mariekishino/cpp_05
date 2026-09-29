@@ -29,10 +29,8 @@ PresidentialPardonForm &PresidentialPardonForm::operator=(const PresidentialPard
 	std::cout << "start assignation PresidentialPardonForm to other"
 			  << std::endl;
 	
-	if (this == &other)
-		return (*this);
-	AForm::operator=(other);
-
+	if (this != &other)
+		AForm::operator=(other);
 	return (*this);
 }
 
@@ -44,14 +42,14 @@ std::string PresidentialPardonForm::getTarget() const
 
 void PresidentialPardonForm::execute(const Bureaucrat &bureaucrat) const
 {
+	if (!this->getIsSigned())
+		throw AForm::FormNotSignedException();
+
 	if (bureaucrat.getGrade() > this->getGradeToExec())
 		throw AForm::GradeTooLowException();
 	
-	else if (!this->getIsSigned())
-		throw AForm::FormNotSignedException();
-	
 	std::cout << this->_target
-			  << " has been pardoned by Zephod Beeblebrox."
+			  << " has been pardoned by Zaphod Beeblebrox."
 			  << std::endl;
 }
 

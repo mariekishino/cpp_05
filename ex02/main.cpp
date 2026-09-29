@@ -37,6 +37,9 @@ int main()
 	/* SHRUBBERY                                                        */
 	/* ================================================================ */
 
+
+	// AForm form; // should not compile: AForm is abstract
+	
 	// TEST 1: 正常系
 	printTitle("TEST 1: SHRUBBERY NORMAL EXECUTION");
 
