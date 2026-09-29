@@ -16,7 +16,7 @@ Bureaucrat::Bureaucrat() : _name("default"), _grade(150)
 
 Bureaucrat::Bureaucrat(std::string const &name) : _name(name), _grade(150)
 {
-	std::cout << "Bereucrat constructor " << this->_name << "called" << std::endl;
+	std::cout << "Bereaucrat constructor " << this->_name << "called" << std::endl;
 }
 
 Bureaucrat::Bureaucrat(int grade) : _name("default")

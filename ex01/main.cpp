@@ -263,6 +263,37 @@ static void testInsertionOperator(void)
     }
 }
 
+static void testCopyConstructor(void)
+{
+    printTitle("TEST: COPY CONSTRUCTOR");
+
+    Bureaucrat alice("Alice", 10);
+    Form original("Original", 30, 20);
+
+    alice.signForm(original);
+
+    Form copy(original);
+
+    std::cout << "Original: " << original << std::endl;
+    std::cout << "Copy    : " << copy << std::endl;
+}
+
+static void testCopyAssignmentOperator(void)
+{
+    printTitle("TEST: COPY ASSIGNMENT OPERATOR");
+    Bureaucrat alice("Alice", 10);
+
+    Form original("Original", 30, 20);
+    Form assigned("Assigned", 100, 100);
+
+    alice.signForm(original);
+
+    assigned = original;
+
+    std::cout << "Original : " << original << std::endl;
+    std::cout << "Assigned : " << assigned << std::endl;
+}
+
 int main(void)
 {
     std::cout << NEON_GREEN;
@@ -277,6 +308,8 @@ int main(void)
     testFormGradeTooLow();
     testAlreadySignedForm();
     testInsertionOperator();
+    testCopyConstructor();
+    testCopyAssignmentOperator();
 
     printTitle("ALL TESTS FINISHED");
 

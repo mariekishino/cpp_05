@@ -2,22 +2,31 @@
 
 Form::Form() : _name("default"), _isSigned(false), _gradeToSign(150), _gradeToExec(150)
 {
-	std::cout << "Form constructor" << this->_name << " called" << std::endl;
+	std::cout << "Form constructor "
+			  << this->_name
+			  << " called" << std::endl;
 }
 
-Form::Form(Form const &other) : _name(other.getName()), _isSigned(false), _gradeToSign(other.getGradeToSign()), _gradeToExec(other.getGradeToExec())
+Form::Form(Form const &other) : _name(other.getName()), _isSigned(other.getIsSigned()), _gradeToSign(other.getGradeToSign()), _gradeToExec(other.getGradeToExec())
 {
-	std::cout << "Form copy of " << other.getName() << " created" << std::endl;
+	std::cout << "Form copy of " 
+			  << other.getName()
+			  << " created" << std::endl;
 }
 Form::Form(int gradeToSign, int gradeToExec) : _name("default"), _isSigned(false), _gradeToSign(gradeToSign), _gradeToExec(gradeToExec)
 {
-	std::cout << "Form constructor default with sign-grade of ( " << gradeToSign << " ) and exec-grade of ( " << gradeToExec << " ) called" << std::endl;
+	std::cout << "Form constructor default with sign-grade of ( "
+	          << gradeToSign 
+			  << " ) and exec-grade of ( "
+			  << gradeToExec << " ) called" << std::endl;
 	this->_checkGrade(gradeToSign, gradeToExec);
 }
 
 Form::Form(std::string const &name) : _name(name), _isSigned(false), _gradeToSign(150), _gradeToExec(150)
 {
-	std::cout << "Form constructor " << this->_name << " created" << std::endl;
+	std::cout << "Form constructor " 
+			  << this->_name 
+			  << " created" << std::endl;
 
 }
 
@@ -37,13 +46,16 @@ Form::Form(std::string const &name, int gradeToSign, int gradeToExec) : _name(na
 
 Form::~Form()
 {
-	std::cout << "From destructor" << this->_name << " called" << std::endl;
+	std::cout << "Form destructor " 
+			  << this->_name 
+			  << " called" << std::endl;
 }
 Form &Form::operator=(Form const &other)
 {
 	std::cout << "start assignation Form to other" << std::endl;
-	if (this == &other)
-		return (*this);
+	if (this != &other)
+		this->_isSigned = other._isSigned;
+
 	return (*this);
 }
 
@@ -75,18 +87,6 @@ void Form::_checkGrade(int gradeToSign, int gradeToExec)
 	else if (gradeToSign > 150 || gradeToExec > 150)
 		throw Form::GradeTooLowException();
 }
-// void Form::beSigned(Bureaucrat &Bureaucrat)
-// {
-// 	if ((int)Bureaucrat.getGrade() > this->_gradeToSign)
-// 		throw Form::GradeTooLowException();
-// 	else if (!this->_isSigned)
-// 	{
-// 		std::cout << "\t" << Bureaucrat.getName() << " signed " << this->getName() << std::endl;
-// 		this->_isSigned = true;
-// 	}
-// 	else
-// 		std::cout << "\t" << Bureaucrat.getName() << "couldn't sign " << this->getName() << " since it's already signed" << std::endl;
-// }
 
 void Form::beSigned(Bureaucrat &bureaucrat)
 {
@@ -105,15 +105,6 @@ const char *Form::GradeTooLowException::what() const throw()
 {
 	return ("Grade too low");
 }
-// std::ostream &operator<<(std::ostream &out, Form *form)
-// {
-// 	std::string isSigned = form->getIsSigned() ? "is signed" : "isn't signed";
-// 	out << form->getName() << " Form " << isSigned;
-// 	out << ". Sign-grade: " << form->getGradeToSign();
-// 	out << ", Exec-grade: " << form->getGradeToExec();
-// 	out << std::endl;
-// 	return (out);
-// }
 
 std::ostream &operator<<(std::ostream &out, const Form &form)
 {
