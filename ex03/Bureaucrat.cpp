@@ -16,7 +16,7 @@ Bureaucrat::Bureaucrat() : _name("default"), _grade(150)
 
 Bureaucrat::Bureaucrat(std::string const &name) : _name(name), _grade(150)
 {
-	std::cout << "Bereucrat constructor " << this->_name << "called" << std::endl;
+	std::cout << "Bereaucrat constructor " << this->_name << "called" << std::endl;
 }
 
 Bureaucrat::Bureaucrat(int grade) : _name("default")
@@ -40,9 +40,8 @@ Bureaucrat::Bureaucrat(Bureaucrat const &other) : _name(other._name)
 Bureaucrat &Bureaucrat::operator=(Bureaucrat const &other)
 {
 	std::cout << "start assignation Bureaucrat to other " << std::endl;
-	if (this == &other)
-		return (*this);
-	this->_grade = other.getGrade();
+	if (this != &other)
+		this->_grade = other.getGrade();
 	return (*this);
 }
 
@@ -83,11 +82,6 @@ void Bureaucrat::decrementGrade()
 	this->_setGrade(this->_grade + 1);
 }
 
-// void Bureaucrat::signForm(Form &form)
-// {
-// 	form.beSigned(*this);
-// }
-
 void Bureaucrat::signForm(AForm &form)
 {
     try
@@ -109,7 +103,24 @@ void Bureaucrat::signForm(AForm &form)
 
 void Bureaucrat::executeForm(AForm &form) const
 {
-	form.execute(*this);
+	try
+	{
+		form.execute(*this);
+
+		std::cout << this->_name
+				  << " executed "
+				  << form.getName()
+				  << std::endl;
+	}
+	catch(const std::exception& e)
+	{
+		std::cout << this->_name
+				  << " couldn't execute "
+				  << form.getName()
+				  << " because "
+				  << e.what()
+				  << std::endl;
+	}
 }
 
 const char *Bureaucrat::GradeTooHighException::what() const throw()
@@ -122,7 +133,6 @@ const char *Bureaucrat::GradeTooLowException::what() const throw()
 	return ("Grade too low");
 }
 
-// 参照で受け取るのが自然
 std::ostream &operator<<(std::ostream &out, const Bureaucrat &other)
 {
 	out << other.getName() 

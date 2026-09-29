@@ -29,10 +29,8 @@ RobotomyRequestForm &RobotomyRequestForm::operator=(const RobotomyRequestForm &o
 {
 	std::cout <<  "start assignation RobotomyRequestForm to other"
 			  << std::endl;
-	if (this == &other)
-		return (*this);
-	
-	AForm::operator=(other);
+	if (this != &other)
+		AForm::operator=(other);
 	return (*this);
 }
 
@@ -43,10 +41,11 @@ std::string RobotomyRequestForm::getTarget() const
 
 void RobotomyRequestForm::execute(const Bureaucrat &bureaucrat) const
 {
+	if (!this->getIsSigned())
+		throw AForm::FormNotSignedException();
+
 	if (bureaucrat.getGrade() > this->getGradeToExec())
 		throw AForm::GradeTooLowException();
-	else if (!this->getIsSigned())
-		throw AForm::FormNotSignedException();
 	
 	std::cout << "* drilling noises *" << std::endl;
 

@@ -24,9 +24,11 @@ ShrubberyCreationForm::~ShrubberyCreationForm()
 
 ShrubberyCreationForm &ShrubberyCreationForm::operator=(const ShrubberyCreationForm &other)
 {
-	std::cout << "start assignation ShrubberyCreationForm to other" << std::endl;
-	if (this == &other)
-		return(*this);
+	std::cout << "start assignation ShrubberyCreationForm to other"
+			  << std::endl;
+
+	if (this != &other)
+		AForm::operator=(other);
 	return(*this);
 }
 
@@ -77,42 +79,3 @@ void ShrubberyCreationForm::execute(const Bureaucrat &bureaucrat) const
 	}
 	outfile.close();
 }
-
-
-// void ShrubberyCreationForm::execute(const Bureaucrat &Bureaucrat) const
-// {
-// 	if (!this->getIsSigned())
-// 		throw AForm::FormNotSignedException();
-
-// 	if ((int)Bureaucrat.getGrade() > this->getGradeToExec())
-// 		throw AForm::GradeTooLowException();
-
-// 	else
-// 	{
-// 		std::ofstream outfile (this->getTarget().append("_shrubbery").c_str());
-
-// 		for (int i = 0; i < 5; i++)
-// 		{
-// 			outfile <<
-// 			"         v" << std::endl <<
-// 			"        >X<" << std::endl <<
-// 			"         A" << std::endl <<
-// 			"        d$b" << std::endl <<
-// 			"      .d\\$$b." << std::endl <<
-// 			"    .d$i$$\\$$b." << std::endl <<
-// 			"       d$$@b" << std::endl <<
-// 			"      d\\$$$ib" << std::endl <<
-// 			"    .d$$$\\$$$b" << std::endl <<
-// 			"  .d$$@$$$$\\$$ib." << std::endl <<
-// 			"      d$$i$$b" << std::endl <<
-// 			"     d\\$$$$@$b" << std::endl <<
-// 			"  .d$@$$\\$$$$$@b." << std::endl <<
-// 			".d$$$$i$$$\\$$$$$$b." << std::endl <<
-// 			"        ###" << std::endl <<
-// 			"        ###" << std::endl <<
-// 			"        ###" << std::endl <<
-// 			std::endl;
-// 		}
-// 		outfile.close();
-// 	}	
-// }

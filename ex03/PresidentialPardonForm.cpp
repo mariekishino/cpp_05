@@ -29,10 +29,9 @@ PresidentialPardonForm &PresidentialPardonForm::operator=(const PresidentialPard
 	std::cout << "start assignation PresidentialPardonForm to other"
 			  << std::endl;
 	
-	if (this == &other)
-		return (*this);
-	AForm::operator=(other);
-
+	if (this != &other)
+		AForm::operator=(other);
+		
 	return (*this);
 }
 
