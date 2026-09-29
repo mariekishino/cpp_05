@@ -22,11 +22,7 @@ Intern &Intern::operator=(const Intern &other)
 {
 	std::cout << "Intern copy assignment operator called" << std::endl;
 
-	if (this != &other)
-	{
-		// Intern has no attributes to copy.
-	}
-
+	(void)other;
 	return (*this);
 }
 

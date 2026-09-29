@@ -44,28 +44,16 @@ std::string PresidentialPardonForm::getTarget() const
 
 void PresidentialPardonForm::execute(const Bureaucrat &bureaucrat) const
 {
+	if (!this->getIsSigned())
+		throw AForm::FormNotSignedException();
+
 	if (bureaucrat.getGrade() > this->getGradeToExec())
 		throw AForm::GradeTooLowException();
-	
-	else if (!this->getIsSigned())
-		throw AForm::FormNotSignedException();
 	
 	std::cout << this->_target
 			  << " has been pardoned by Zephod Beeblebrox."
 			  << std::endl;
 }
 
-std::ostream &operator<<(std::ostream &out, PresidentialPardonForm *src)
-{
-	std::string isSigned =
-		src->getIsSigned() ? " is signed" : " isn't signed";
-	
-	out << src->getName() << isSigned;
-	out << " . Sign-grade: " << src->getGradeToSign();
-	out << ", execution-grade " << src->getGradeToExec()
-		<< std::endl;
-	
-	return (out);
-}
 
 

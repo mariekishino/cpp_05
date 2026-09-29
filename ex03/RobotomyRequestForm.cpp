@@ -71,14 +71,3 @@ void RobotomyRequestForm::execute(const Bureaucrat &bureaucrat) const
 				  << std::endl;
 	}
 }
-
-std::ostream &operator<<(std::ostream &out, RobotomyRequestForm *src)
-{
-	std::string isSigned = src->getIsSigned() ? " is signed" : " isn't signed";
-
-	out << src->getName() << isSigned;
-	out << ". Sign-grade: " << src->getGradeToSign();
-	out << ", execution-grade " << src->getGradeToExec() << std::endl;
-
-	return(out);
-}
