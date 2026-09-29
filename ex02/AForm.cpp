@@ -5,7 +5,11 @@ AForm::AForm() : _name("default"), _isSigned(false), _gradeToSign(150), _gradeTo
 	std::cout << "AForm constructor" << this->_name << " called" << std::endl;
 }
 
-AForm::AForm(AForm const &other) : _name(other.getName()), _isSigned(other.getIsSigned()), _gradeToSign(other.getGradeToSign()), _gradeToExec(other.getGradeToExec())
+AForm::AForm(AForm const &other)
+	: _name(other.getName()),
+	  _isSigned(other.getIsSigned()),
+	  _gradeToSign(other.getGradeToSign()),
+	  _gradeToExec(other.getGradeToExec())
 {
 	std::cout << "AForm copy of "
 			  << other.getName()
