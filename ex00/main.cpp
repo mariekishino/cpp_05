@@ -15,7 +15,7 @@ static void printTitle(const std::string &title)
 			  << RESET << std::endl;
 	std::cout << std::endl;
 }
-static void partationLine()
+static void partitionLine()
 {
 	std::cout << GREEN
 			  << "----------------------------------------------------------"
@@ -30,13 +30,13 @@ int main()
 	try
 	{
 		Bureaucrat basic("Hanako", 42);
-		partationLine();
+		partitionLine();
 
 		std::cout << basic << std::endl;
 
 		std::cout << "Name  : " << basic.getName() << std::endl;
 		std::cout << "Grade : " << basic.getGrade() << std::endl;
-		partationLine();
+		partitionLine();
 	}
 	catch(const std::exception& e)
 	{
@@ -54,11 +54,11 @@ int main()
 	try
 	{
 		Bureaucrat top("Taro", 3);
-		partationLine();
+		partitionLine();
 		std::cout << "Before : " << top << std::endl;
 		top.incrementGrade();
 		std::cout << "After  : " << top << std::endl;
-		partationLine();
+		partitionLine();
 	}
 	catch(const std::exception &e)
 	{
@@ -76,11 +76,11 @@ int main()
 	try
 	{
 		Bureaucrat bottom("Ichiro", 3);
-		partationLine();
+		partitionLine();
 		std::cout << "Before : " << bottom << std::endl;
 		bottom.decrementGrade();
 		std::cout << "After  : " << bottom << std::endl;
-		partationLine();
+		partitionLine();
 	}
 	catch (const std::exception &e)
 	{
@@ -96,13 +96,13 @@ int main()
 	try
 	{
 		Bureaucrat high("hanako", 0);
-		partationLine();
+		partitionLine();
 		std::cout << high << std::endl;
-		partationLine();
+		partitionLine();
 	}
 	catch(const Bureaucrat::GradeTooHighException &e)
 	{
-		partationLine();
+		partitionLine();
 		std::cout << RED
 				  << "Caught GradeTooHighException: "
 				  << e.what()
@@ -116,13 +116,13 @@ int main()
 	try
 	{
 		Bureaucrat low("Taro", 151);
-		partationLine();
+		partitionLine();
 		std::cout << low << std::endl;
-		partationLine();
+		partitionLine();
 	}
 	catch(const Bureaucrat::GradeTooLowException &e)
 	{
-		partationLine();
+		partitionLine();
 		std::cout << RED
 		          << "Caught GradeTooLowException : "
 				  << e.what()
@@ -137,7 +137,7 @@ int main()
 	{
 		Bureaucrat top("Hanako", 1);
 
-		partationLine();
+		partitionLine();
 		std::cout << "Before : " << top << std::endl;
 
 		top.incrementGrade();
@@ -160,13 +160,13 @@ int main()
 	try
 	{
 		Bureaucrat bottom("Taro", 150);
-		partationLine();
+		partitionLine();
 
 		std::cout << "Before : " << bottom << std::endl;
 		bottom.decrementGrade();
 
 		std::cout << "After  : " << bottom << std::endl;
-		partationLine();
+		partitionLine();
 	}
 	catch (const Bureaucrat::GradeTooLowException &e)
 	{
@@ -184,7 +184,7 @@ int main()
 	try
 	{
 		Bureaucrat error("Error", 0);
-		partationLine();
+		partitionLine();
 		std::cout << error << std::endl;
 	}
 	catch (const std::exception &e)
@@ -202,7 +202,7 @@ int main()
 	try
 	{
 		Bureaucrat error("Error", 151);
-		partationLine();
+		partitionLine();
 		std::cout << error << std::endl;
 	}
 	catch (const std::exception &e)
@@ -221,7 +221,7 @@ int main()
 	{
 		Bureaucrat original("Taro", 50);
 		Bureaucrat copy(original);
-		partationLine();
+		partitionLine();
 
 		std::cout << "<< BEFORE >>" << std::endl;
 		std::cout << "Original : " << original << std::endl;
@@ -233,12 +233,12 @@ int main()
 		std::cout << "<< AFTER >> " << std::endl;
 		std::cout << "Original : " << original << std::endl;
 		std::cout << "Copy	   : " << copy << std::endl;
-		partationLine();
+		partitionLine();
 	}
 	catch(const std::exception& e)
 	{
 		std::cout << RED 
-				  << "0Exception: "
+				  << "Exception: "
 				  << e.what() 
 				  << RESET << std::endl;
 	}
@@ -252,7 +252,7 @@ int main()
 	{
 		Bureaucrat original("Taro", 50);
 		Bureaucrat assigned("Hanako", 100);
-		partationLine();
+		partitionLine();
 
 		std::cout << "Before   : " << std::endl;
 		std::cout << "Original : " << original << std::endl;
@@ -262,9 +262,9 @@ int main()
 
 		std::cout << std::endl;
 		std::cout << "After assignment : " << std::endl;
-		std::cout << "Origina0l : " << original << std::endl;
+		std::cout << "Original : " << original << std::endl;
 		std::cout << "Assigned : " << assigned << std::endl;
-		partationLine();
+		partitionLine();
 	}
 	catch(const std::exception& e)
 	{
@@ -280,13 +280,13 @@ int main()
 	{	
     	Bureaucrat basic;
 
-    	partationLine();
+    	partitionLine();
 
     	std::cout << basic << std::endl;
     	std::cout << "Name  : " << basic.getName() << std::endl;
     	std::cout << "Grade : " << basic.getGrade() << std::endl;
 
-    	partationLine();
+    	partitionLine();
 	}
 	catch (const std::exception &e)
 	{
