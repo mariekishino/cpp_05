@@ -58,3 +58,4 @@ std::ostream &operator<<(std::ostream &out, const AForm &other);
 
 
 #endif
+

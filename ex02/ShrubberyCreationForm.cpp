@@ -64,12 +64,3 @@ void ShrubberyCreationForm::execute(const Bureaucrat &Bureaucrat) const
 		outfile.close();
 	}	
 }
-
-std::ostream &operator<<(std::ostream &out, ShrubberyCreationForm *src)
-{
-	std::string isSigned = src->getIsSigned() ? " is signed" : " isn't signed";
-	out << src->getName() << isSigned;
-	out << ". Sign-grade: " << src->getGradeToSign();
-	out << ", execution-grade " << src->getGradeToExec() << std::endl;
-	return (out);
-}

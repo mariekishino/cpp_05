@@ -16,7 +16,7 @@ Bureaucrat::Bureaucrat() : _name("default"), _grade(150)
 
 Bureaucrat::Bureaucrat(std::string const &name) : _name(name), _grade(150)
 {
-	std::cout << "Bereucrat constructor " << this->_name << "called" << std::endl;
+	std::cout << "Bereaucrat constructor " << this->_name << "called" << std::endl;
 }
 
 Bureaucrat::Bureaucrat(int grade) : _name("default")
@@ -122,7 +122,6 @@ const char *Bureaucrat::GradeTooLowException::what() const throw()
 	return ("Grade too low");
 }
 
-// 参照で受け取るのが自然
 std::ostream &operator<<(std::ostream &out, const Bureaucrat &other)
 {
 	out << other.getName() 
